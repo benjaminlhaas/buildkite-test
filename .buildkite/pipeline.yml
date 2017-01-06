@@ -2,3 +2,15 @@ steps:
   - name: ":hammer: Example Script"
     command: "script.sh"
     artifact_paths: "artifacts/*"
+
+  - wait
+
+  - label: ':computer: Tests'
+    command: 'tests.sh'
+
+  - block: ':shipit: Release'
+    branches: 'master'
+
+  - label: ':metal: Release'
+    command: 'release.sh'
+
